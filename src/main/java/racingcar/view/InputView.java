@@ -9,7 +9,7 @@ public class InputView {
         List<String> carName = new ArrayList<>();
         String[] splitedInput = Console.readLine().split(",");
 
-//        validateCarCount(splitedInput.length);
+        validateCarCount(splitedInput.length);
 
         for (String name : splitedInput) {
 //            validateNameLength(name.length());
@@ -17,5 +17,11 @@ public class InputView {
         }
 
         return carName;
+    }
+
+    public static void validateCarCount(int carCount) {
+        if (carCount < 2) {
+            throw new IllegalArgumentException("참여 자동차는 2대 이상이어야 합니다.");
+        }
     }
 }
