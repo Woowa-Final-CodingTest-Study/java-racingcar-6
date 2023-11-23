@@ -6,10 +6,11 @@ import racingcar.view.OutputView;
 
 public class RacingController {
     Racing racing;
+    int attempts;
 
     public void run() {
         requestCarName();
-//        requestAttempts();
+        requestAttempts();
 //        showResult();
 //        showFinalWinner();
     }
@@ -17,5 +18,9 @@ public class RacingController {
     public void requestCarName() {
         OutputView.printRequestCarName();
         racing = new Racing(InputView.readCarName());
+    }
+
+    public void requestAttempts() {
+        OutputView.printRequestAttempts();
     }
 }
