@@ -15,7 +15,6 @@ public class InputView {
             validateNameLength(name);
             carName.add(name);
         }
-
         return carName;
     }
 
