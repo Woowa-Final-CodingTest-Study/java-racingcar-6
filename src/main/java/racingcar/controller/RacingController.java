@@ -22,5 +22,6 @@ public class RacingController {
 
     public void requestAttempts() {
         OutputView.printRequestAttempts();
+        attempts = InputView.readAttempts();
     }
 }
