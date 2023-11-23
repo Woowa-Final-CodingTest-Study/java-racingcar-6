@@ -12,7 +12,7 @@ public class InputView {
         validateCarCount(splitedInput.length);
 
         for (String name : splitedInput) {
-//            validateNameLength(name.length());
+            validateNameLength(name);
             carName.add(name);
         }
 
@@ -22,6 +22,12 @@ public class InputView {
     public static void validateCarCount(int carCount) {
         if (carCount < 2) {
             throw new IllegalArgumentException("참여 자동차는 2대 이상이어야 합니다.");
+        }
+    }
+
+    public static void validateNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
     }
 }
