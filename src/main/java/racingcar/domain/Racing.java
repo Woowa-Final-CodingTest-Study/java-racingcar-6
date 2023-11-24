@@ -26,7 +26,7 @@ public class Racing {
         }
     }
 
-    public int getRandomNumber() {
+    private int getRandomNumber() {
         return pickNumberInRange(0, 9);
     }
 
@@ -51,7 +51,7 @@ public class Racing {
         return winners;
     }
 
-    public int getMaxLocation() {
+    private int getMaxLocation() {
         return cars.stream()
                 .map(Car::getLocation)
                 .max(Comparator.comparingInt(x -> x))
