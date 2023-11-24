@@ -21,4 +21,13 @@ public class OutputView {
         }
         System.out.print("\n");
     }
+
+    public static void printFinalWinner(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+        
+        System.out.print(winners.get(0));
+        for (int i = 1; i < winners.size(); i++) {
+            System.out.print(", " + winners.get(i));
+        }
+    }
 }
