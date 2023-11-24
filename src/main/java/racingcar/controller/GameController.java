@@ -39,5 +39,7 @@ public class GameController {
             cars.goForward();
             outputView.printRoundResult(cars);
         }
+
+        outputView.printWinner(cars);
     }
 }

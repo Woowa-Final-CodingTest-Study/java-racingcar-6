@@ -17,10 +17,16 @@ public class Car {
     }
 
     public String roundResult() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(name);
-        sb.append(" : ");
-        sb.append("-".repeat(moveCount));
-        return sb.toString();
+        return name +
+                " : " +
+                "-".repeat(moveCount);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 }

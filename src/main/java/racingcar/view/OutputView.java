@@ -1,7 +1,8 @@
 package racingcar.view;
 
-import racingcar.constant.OutputMessage;
 import racingcar.model.Cars;
+
+import static racingcar.constant.OutputMessage.*;
 
 public class OutputView {
     private static OutputView outputView;
@@ -25,19 +26,23 @@ public class OutputView {
     }
 
     public void notifyInputCarNames() {
-        println(OutputMessage.NOTIFY_INPUT_CAR_NAMES);
+        println(NOTIFY_INPUT_CAR_NAMES);
     }
 
     public void notifyInputTryCount() {
-        println(OutputMessage.NOTIFY_INPUT_TRY_COUNT);
+        println(NOTIFY_INPUT_TRY_COUNT);
     }
 
     public void printRacingResult() {
-        println(OutputMessage.RACING_RESULT);
+        println(RACING_RESULT);
     }
 
     public void printRoundResult(Cars cars) {
         cars.roundResult().forEach(this::println);
         println();
+    }
+
+    public void printWinner(Cars cars) {
+        println(WINNER + cars.winnerNames());
     }
 }

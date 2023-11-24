@@ -6,4 +6,5 @@ public class OutputMessage {
 
     public static final String NOTIFY_INPUT_TRY_COUNT = "시도할 회수는 몇회인가요?";
     public static final String RACING_RESULT = "실행 결과";
+    public static final String WINNER = "최종 우승자 : ";
 }
