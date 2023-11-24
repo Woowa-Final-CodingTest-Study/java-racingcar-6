@@ -38,7 +38,7 @@ public class InputView {
 
     private void validateCarNameLengthWithinRange(List<String> carNames) { // TODO: 이름 길이도 변수로
         carNames.forEach(name -> {
-            if (name.isEmpty() || name.length() > 5)
+            if (name.isEmpty() || name.length() > 5) // TODO: 자동차가 1개일 때 레이싱을??
                 throw new IllegalArgumentException();
         });
     }
@@ -48,7 +48,7 @@ public class InputView {
             throw new IllegalArgumentException();
     }
 
-    public int readTryCount() {
+    public int readTryCount() { // TODO: try -> round로 통일
         try {
             String input = Console.readLine();
             int tryCount = Integer.parseInt(input);

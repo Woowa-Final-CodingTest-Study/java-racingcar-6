@@ -34,9 +34,9 @@ public class GameController {
         outputView.notifyInputTryCount();
         int tryCount = inputView.readTryCount();
 
-        outputView.printRacingResult();
-        for (int i = 0; i < tryCount; i++) {
-            cars.goForward();
+        outputView.printStartRacing();
+        for (int i = 0; i < tryCount; i++) { // TODO: 함수로 한 번 감싸도 괜찮을 듯?
+            cars.goForward(); // TODO: 난수를 밖에서 제공하도록 리팩토링
             outputView.printRoundResult(cars);
         }
 

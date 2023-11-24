@@ -11,7 +11,7 @@ public class Car {
     }
 
     public void goForward() {
-        int i = Randoms.pickNumberInRange(0, 9);
+        int i = Randoms.pickNumberInRange(0, 9); // TODO: magic number
         if (i >= 4)
             moveCount++;
     }
