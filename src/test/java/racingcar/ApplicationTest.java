@@ -48,9 +48,41 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 이름에_대한_예외_처리() {
+    void 이름이_다섯자_초과할때_예외처리() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 참여자동차가_없을때_예외처리() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 참여자동차가_한개일때_예외처리() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("hello", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도횟수가_0일때_예외처리() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("hello,world", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도횟수가_정수가_아닐때_작을때_예외처리() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("hello,world", "1.1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
