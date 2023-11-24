@@ -21,7 +21,7 @@ public class InputView {
 
     public List<String> readCarNames() {
         String input = Console.readLine();
-        List<String> carNames = List.of(input.split(","));
+        List<String> carNames = List.of(input.split(",")); //TODO: 시간 되면 공백에 대한 처리도 구현
         validate(carNames);
         return carNames;
     }

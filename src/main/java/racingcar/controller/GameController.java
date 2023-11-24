@@ -1,7 +1,10 @@
 package racingcar.controller;
 
+import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
 
 public class GameController {
 
@@ -24,6 +27,9 @@ public class GameController {
 
     public void start() {
         outputView.notifyInputCarNames();
-        inputView.readCarNames();
+        List<String> carNames = inputView.readCarNames();
+        Cars cars = new Cars(carNames);
+
+
     }
 }
