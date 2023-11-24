@@ -10,8 +10,8 @@
 ### 자동차 이름 입력
 - 자동차들의 이름을 입력받는다. 이름은 (,)로 구분한다.
 - 입력에 대해 다음과 같은 예외처리가 필요하다.
-  - 이름이 1-5자의 범위를 벗어난 경우: `IllegalArgumentException`
   - 이름을 1개만 입력한 경우: `IllegalArgumentException`
+  - 이름이 1-5자의 범위를 벗어난 경우: `IllegalArgumentException`
   - 중복된 이름을 입력한 경우: `IllegalArgumentException`  
 
 ### 자동차 객체 생성

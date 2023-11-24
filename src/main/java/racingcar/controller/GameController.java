@@ -21,4 +21,9 @@ public class GameController {
         }
         return controller;
     }
+
+    public void start() {
+        outputView.notifyInputCarNames();
+        inputView.readCarNames();
+    }
 }

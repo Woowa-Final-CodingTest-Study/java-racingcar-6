@@ -10,5 +10,7 @@ public class Application {
         OutputView outputView = OutputView.getInstance();
 
         GameController gameController = GameController.getInstance(inputView, outputView);
+
+        gameController.start();
     }
 }
