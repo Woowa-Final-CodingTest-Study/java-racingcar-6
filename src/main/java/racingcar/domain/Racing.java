@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Racing {
-    List<Car> cars;
+    private final List<Car> cars;
 
     public Racing(List<String> carName) {
         cars = new ArrayList<>();

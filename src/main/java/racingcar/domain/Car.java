@@ -1,8 +1,8 @@
 package racingcar.domain;
 
 public class Car {
-    String name;
-    int location;
+    private final String name;
+    private int location;
 
     public Car(String name) {
         this.name = name;
