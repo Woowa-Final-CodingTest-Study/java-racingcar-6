@@ -12,4 +12,12 @@ public class Car {
     public void goForward() {
         location++;
     }
+
+    private String getLocationLetters() {
+        return "-".repeat(location);
+    }
+
+    public String getResult() {
+        return name + " : " + getLocationLetters();
+    }
 }

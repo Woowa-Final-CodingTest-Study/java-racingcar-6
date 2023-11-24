@@ -28,7 +28,12 @@ public class Racing {
         return pickNumberInRange(0, 9);
     }
 
-    public void getResults() {
+    public List<String> getResults() {
+        List<String> results = new ArrayList<>();
 
+        for (int i = 0; i < cars.size(); i++) {
+            results.add(cars.get(i).getResult());
+        }
+        return results;
     }
 }
