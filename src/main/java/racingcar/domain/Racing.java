@@ -18,6 +18,9 @@ public class Racing {
 
     public void execute() {
         for (Car car : cars) {
+            if (getRandomNumber() >= 4) {
+                car.goForward();
+            }
         }
     }
 
