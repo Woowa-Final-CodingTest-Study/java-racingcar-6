@@ -28,7 +28,11 @@ public class GameController {
     public void start() {
         outputView.notifyInputCarNames();
         List<String> carNames = inputView.readCarNames();
+
         Cars cars = new Cars(carNames);
+
+        outputView.notifyInputTryCount();
+        int tryCount = inputView.readTryCount();
 
 
     }

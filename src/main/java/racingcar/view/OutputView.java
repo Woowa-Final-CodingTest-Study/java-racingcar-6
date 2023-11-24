@@ -15,11 +15,15 @@ public class OutputView {
         return outputView;
     }
 
+    private void println(String s) {
+        System.out.println(s);
+    }
+
     public void notifyInputCarNames() {
         println(OutputMessage.NOTIFY_INPUT_CAR_NAMES);
     }
 
-    private void println(String s) {
-        System.out.println(s);
+    public void notifyInputTryCount() {
+        println(OutputMessage.NOTIFY_INPUT_TRY_COUNT);
     }
 }

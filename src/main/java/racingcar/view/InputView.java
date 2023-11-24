@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class InputView {
     private static InputView inputView;
@@ -22,11 +21,11 @@ public class InputView {
     public List<String> readCarNames() {
         String input = Console.readLine();
         List<String> carNames = List.of(input.split(",")); //TODO: 시간 되면 공백에 대한 처리도 구현
-        validate(carNames);
+        validateCarNames(carNames);
         return carNames;
     }
 
-    private void validate(List<String> carNames) {
+    private void validateCarNames(List<String> carNames) {
         validateCarNamesNotEmpty(carNames);
         validateCarNameLengthWithinRange(carNames);
         validateCarNamesUnique(carNames);
@@ -46,6 +45,22 @@ public class InputView {
 
     private void validateCarNamesUnique(List<String> carNames) {
         if (carNames.size() != new HashSet<>(carNames).size())
+            throw new IllegalArgumentException();
+    }
+
+    public int readTryCount() {
+        try {
+            String input = Console.readLine();
+            int tryCount = Integer.parseInt(input);
+            validateTryCount(tryCount);
+            return tryCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateTryCount(int tryCount) {
+        if (tryCount == 0)
             throw new IllegalArgumentException();
     }
 }
