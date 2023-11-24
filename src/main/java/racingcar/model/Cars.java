@@ -11,4 +11,14 @@ public class Cars {
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
+
+    public void goForward() {
+        cars.forEach(Car::goForward);
+    }
+
+    public List<String> roundResult() {
+        return cars.stream()
+                .map(Car::roundResult)
+                .collect(Collectors.toList());
+    }
 }

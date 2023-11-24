@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.constant.OutputMessage;
+import racingcar.model.Cars;
 
 public class OutputView {
     private static OutputView outputView;
@@ -15,6 +16,10 @@ public class OutputView {
         return outputView;
     }
 
+    private void println() {
+        System.out.println();
+    }
+
     private void println(String s) {
         System.out.println(s);
     }
@@ -25,5 +30,14 @@ public class OutputView {
 
     public void notifyInputTryCount() {
         println(OutputMessage.NOTIFY_INPUT_TRY_COUNT);
+    }
+
+    public void printRacingResult() {
+        println(OutputMessage.RACING_RESULT);
+    }
+
+    public void printRoundResult(Cars cars) {
+        cars.roundResult().forEach(this::println);
+        println();
     }
 }

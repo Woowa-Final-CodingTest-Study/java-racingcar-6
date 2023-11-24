@@ -34,6 +34,10 @@ public class GameController {
         outputView.notifyInputTryCount();
         int tryCount = inputView.readTryCount();
 
-
+        outputView.printRacingResult();
+        for (int i = 0; i < tryCount; i++) {
+            cars.goForward();
+            outputView.printRoundResult(cars);
+        }
     }
 }
