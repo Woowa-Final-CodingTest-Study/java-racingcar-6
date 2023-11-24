@@ -1,6 +1,9 @@
 package racingcar.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static racingcar.utils.constants.NUMBER_GOFORWARD_MIN;
+import static racingcar.utils.constants.RANDOM_NUMBER_MAX;
+import static racingcar.utils.constants.RANDOM_NUMBER_MIN;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,14 +23,14 @@ public class Racing {
 
     public void execute() {
         for (Car car : cars) {
-            if (getRandomNumber() >= 4) {
+            if (getRandomNumber() >= NUMBER_GOFORWARD_MIN) {
                 car.goForward();
             }
         }
     }
 
     private int getRandomNumber() {
-        return pickNumberInRange(0, 9);
+        return pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
     }
 
     public List<String> getResults() {

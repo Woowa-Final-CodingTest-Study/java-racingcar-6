@@ -5,8 +5,8 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
-    Racing racing;
-    int attempts;
+    private Racing racing;
+    private int attempts;
 
     public void run() {
         requestCarName();
