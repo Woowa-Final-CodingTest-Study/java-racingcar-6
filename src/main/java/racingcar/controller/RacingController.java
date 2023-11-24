@@ -11,8 +11,9 @@ public class RacingController {
     public void run() {
         requestCarName();
         requestAttempts();
+
         showResult();
-//        showFinalWinner();
+        showFinalWinner();
     }
 
     public void requestCarName() {
@@ -31,5 +32,9 @@ public class RacingController {
             racing.execute();
             OutputView.printResult(racing.getResults());
         }
+    }
+
+    public void showFinalWinner() {
+        OutputView.printFinalWinner(racing.getWinner());
     }
 }

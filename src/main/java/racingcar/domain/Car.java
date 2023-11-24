@@ -20,4 +20,12 @@ public class Car {
     public String getResult() {
         return name + " : " + getLocationLetters();
     }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
