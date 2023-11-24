@@ -30,7 +30,7 @@ public class InputView {
         try {
             return Integer.parseInt(num);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("입력값은 숫자여야합니다.");
+            throw new IllegalArgumentException("입력값은 정수여야합니다.");
         }
     }
 
