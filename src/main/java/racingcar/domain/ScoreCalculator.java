@@ -5,6 +5,8 @@ import java.util.List;
 
 public class ScoreCalculator {
 
+    Race race = new Race();
+
     public List<Player> initializePlayerScore(String input) {
         validateInputCorrectSeparator(input);
         String[] names = input.split(",");
@@ -17,6 +19,20 @@ public class ScoreCalculator {
         }
 
         return players;
+    }
+
+    public void startRacing(List<Player> players) {
+        for (int i = 0; i < players.size(); i++) {
+            Player player = players.get(i);
+            moveOrStop(player);
+        }
+    }
+
+    public void moveOrStop(Player player) {
+        if (race.decideMovement()) {
+            String playerName = player.getPlayerName();
+            player.getPlayer().put(playerName, player.getScore(playerName)+1);
+        }
     }
 
     public void validateInputCorrectSeparator(String input) {

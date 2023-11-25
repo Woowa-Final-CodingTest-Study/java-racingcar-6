@@ -13,5 +13,10 @@ public class OutputView {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
+    public void printResult() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
 
 }

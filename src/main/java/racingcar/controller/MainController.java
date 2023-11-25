@@ -16,6 +16,11 @@ public class MainController {
     public void run() {
         List<Player> players = inputPlayerNames();
         int attemptCount = inputAttemptNumber();
+
+        outputView.printResult();
+        while (attemptCount-- > 0) {
+            scoreCalculator.startRacing(players);
+        }
     }
 
     public List<Player> inputPlayerNames() {
