@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Player {
 
@@ -19,11 +20,13 @@ public class Player {
         return player;
     }
 
-    public int getScore(String name) {
-        return player.get(name);
+    public String getPlayerName() {
+        Set<String> key = player.keySet();
+
+        return key.iterator().next();
     }
 
-    public void increaseScore(String name) {
-        player.put(name, player.get(name)+1);
+    public int getScore(String name) {
+        return player.get(name);
     }
 }

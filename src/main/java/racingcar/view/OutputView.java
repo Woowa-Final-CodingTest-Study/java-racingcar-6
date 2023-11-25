@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import racingcar.domain.Player;
-
 import java.util.List;
 
 public class OutputView {
@@ -18,5 +17,26 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
+    public void printPlayerScore(List<Player> players) {
+        StringBuilder score = new StringBuilder();
+
+        for (int i = 0; i < players.size(); i++) {
+            score.append(makeResult(players.get(i))).append("\n");
+        }
+        System.out.println(score);
+    }
+
+    public String makeResult(Player player) {
+        StringBuilder result = new StringBuilder();
+
+        String playerName = player.getPlayerName();
+        int playerScore = player.getScore(playerName);
+
+        result.append(playerName).append(" : ");
+        for (int i = 0; i < playerScore; i++) {
+            result.append("-");
+        }
+        return result.toString();
+    }
 
 }

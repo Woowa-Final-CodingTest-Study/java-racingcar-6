@@ -4,7 +4,6 @@ import racingcar.domain.Player;
 import racingcar.domain.ScoreCalculator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
 import java.util.List;
 
 public class MainController {
@@ -20,6 +19,7 @@ public class MainController {
         outputView.printResult();
         while (attemptCount-- > 0) {
             scoreCalculator.startRacing(players);
+            outputView.printPlayerScore(players);
         }
     }
 
@@ -34,6 +34,5 @@ public class MainController {
         outputView.printInputAttemptCount();
         return Integer.parseInt(inputView.getUserInput());
     }
-
 
 }
