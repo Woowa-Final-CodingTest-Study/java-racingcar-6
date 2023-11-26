@@ -1,15 +1,14 @@
 package racingcar.view;
 
-import static racingcar.constant.MessageConstant.NAME_SPLIT_SEPARATOR;
-import static racingcar.constant.RaceConstant.MAXIMUM_ATTEMPT_COUNT;
-import static racingcar.constant.RaceConstant.NAME_LENGTH_LIMIT;
-
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
+import racingcar.constant.MessageConstant;
+import racingcar.constant.RaceConstant;
 
 public class InputView {
+    private static final String DELETE_SEPARATOR_REGEX = "[0-9a-zA-Zㄱ-ㅎ가-힣,]";
 
     public String inputPlayerNames() {
         String input = getUserInput();
@@ -48,28 +47,28 @@ public class InputView {
     }
 
     public void validateInputCorrectSeparator(String input) {
-        String deleteSeparator = input.replaceAll("[0-9a-zA-Zㄱ-ㅎ가-힣,]", "");
+        String deleteSeparator = input.replaceAll(DELETE_SEPARATOR_REGEX, "");
         if (!deleteSeparator.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
 
     public void validatePlayerNameLength(String input) {
-        String[] names = input.split(NAME_SPLIT_SEPARATOR.getMessage());
+        String[] names = input.split(MessageConstant.NAME_SPLIT_SEPARATOR);
 
         for (String name : names) {
-            if (name.length() > NAME_LENGTH_LIMIT.getNumber()) {
+            if (name.length() > RaceConstant.NAME_LENGTH_LIMIT) {
                 throw new IllegalArgumentException();
             }
         }
     }
 
     public void validateDuplicateName(String input) {
-        Set<String> set = Arrays.stream(input.split(","))
+        Set<String> set = Arrays.stream(input.split(MessageConstant.NAME_SPLIT_SEPARATOR))
                 .map(String::toLowerCase)
                 .collect(Collectors.toSet());
 
-        if (set.size() != input.split(",").length) {
+        if (set.size() != input.split(MessageConstant.NAME_SPLIT_SEPARATOR).length) {
             throw new IllegalArgumentException();
         }
     }
@@ -89,7 +88,7 @@ public class InputView {
     }
 
     public void validateCountLimit(String input) {
-        if (Integer.parseInt(input) > MAXIMUM_ATTEMPT_COUNT.getNumber()) {
+        if (Integer.parseInt(input) > RaceConstant.MAXIMUM_ATTEMPT_COUNT) {
             throw new IllegalArgumentException();
         }
     }

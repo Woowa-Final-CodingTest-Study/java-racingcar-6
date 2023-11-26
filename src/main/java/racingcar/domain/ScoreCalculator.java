@@ -2,15 +2,14 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static racingcar.constant.MessageConstant.NAME_SPLIT_SEPARATOR;
+import racingcar.constant.MessageConstant;
 
 public class ScoreCalculator {
 
     Race race = new Race();
 
     public List<Player> initializePlayerScore(String input) {
-        String[] names = input.split(NAME_SPLIT_SEPARATOR.getMessage());
+        String[] names = input.split(MessageConstant.NAME_SPLIT_SEPARATOR);
 
         List<Player> players = new ArrayList<>();
 
