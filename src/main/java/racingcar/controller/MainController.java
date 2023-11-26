@@ -5,6 +5,7 @@ import racingcar.domain.ScoreCalculator;
 import racingcar.domain.Winner;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
 import java.util.List;
 
 public class MainController {
@@ -15,8 +16,8 @@ public class MainController {
     OutputView outputView = new OutputView();
 
     public void run() {
-        List<Player> players = inputPlayerNames();
-        int attemptCount = inputAttemptNumber();
+        List<Player> players = getPlayerNames();
+        int attemptCount = getAttemptNumber();
 
         outputView.printResult();
         while (attemptCount-- > 0) {
@@ -26,16 +27,16 @@ public class MainController {
         outputView.printWinner(winner.chooseWinner(players));
     }
 
-    public List<Player> inputPlayerNames() {
+    public List<Player> getPlayerNames() {
         outputView.printInputPlayerName();
-        String input = inputView.getUserInput();
+        String input = inputView.inputPlayerName();
         List<Player> players = scoreCalculator.initializePlayerScore(input);
         return players;
     }
 
-    public int inputAttemptNumber() {
+    public int getAttemptNumber() {
         outputView.printInputAttemptCount();
-        return Integer.parseInt(inputView.getUserInput());
+        return Integer.parseInt(inputView.inputAttemptCount());
     }
 
 }
