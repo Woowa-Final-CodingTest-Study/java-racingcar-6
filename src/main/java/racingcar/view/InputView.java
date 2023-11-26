@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 
 import static racingcar.constant.MessageConstant.NAME_SPLIT_SEPARATOR;
+import static racingcar.constant.RaceConstant.MAXIMUM_ATTEMPT_COUNT;
 import static racingcar.constant.RaceConstant.NAME_LENGTH_LIMIT;
 
 public class InputView {
@@ -66,7 +67,7 @@ public class InputView {
     }
 
     public void validateCountLimit(String input) {
-        if (Integer.parseInt(input) > 120) {
+        if (Integer.parseInt(input) > MAXIMUM_ATTEMPT_COUNT.getNumber()) {
             throw new IllegalArgumentException();
         }
     }
