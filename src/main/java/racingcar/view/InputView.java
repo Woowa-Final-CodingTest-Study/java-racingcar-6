@@ -13,17 +13,13 @@ public class InputView {
 
     public String inputPlayerNames() {
         String input = getUserInput();
-        validateInputCorrectSeparator(input);
-        validatePlayerNameLength(input);
-        validateDuplicateName(input);
+        validatePlayerNames(input);
         return input;
     }
 
     public String inputAttemptCount() {
         String input = getUserInput();
-        validateNumeric(input);
-        validateNegativeOrZero(input);
-        validateCountLimit(input);
+        validateAttemptCount(input);
         return input;
     }
 
@@ -31,6 +27,18 @@ public class InputView {
         String input = Console.readLine();
         validateInputIsEmpty(input);
         return input;
+    }
+
+    public void validatePlayerNames(String input) {
+        validateInputCorrectSeparator(input);
+        validatePlayerNameLength(input);
+        validateDuplicateName(input);
+    }
+
+    public void validateAttemptCount(String input) {
+        validateNumeric(input);
+        validateNegativeOrZero(input);
+        validateCountLimit(input);
     }
 
     public void validateInputIsEmpty(String input) {
