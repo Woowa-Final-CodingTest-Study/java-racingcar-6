@@ -10,7 +10,6 @@ public enum MessageConstant {
     WINNER_SEPARATOR(", "),
     SCORE("-");
 
-
     private final String message;
 
     MessageConstant(String message) {

@@ -22,7 +22,6 @@ public class Player {
 
     public String getPlayerName() {
         Set<String> key = player.keySet();
-
         return key.iterator().next();
     }
 
