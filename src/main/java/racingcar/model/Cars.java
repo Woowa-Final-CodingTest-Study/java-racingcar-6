@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -13,8 +12,8 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void goForward() {
-        cars.forEach(Car::goForward);
+    public void goForward(RandomNumberGenerator rnd) {
+        cars.forEach(car -> car.goForward(rnd.next()));
     }
 
     public List<String> roundResult() {
@@ -24,21 +23,6 @@ public class Cars {
     }
 
     public String winnerNames() {
-        int maxValue = cars.stream()
-                .mapToInt(Car::getMoveCount)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
-
-        List<Car> winners = cars.stream()
-                .filter(car -> car.getMoveCount() == maxValue)
-                .toList();
-
-        StringBuilder sb = new StringBuilder();
-        winners.forEach(winner -> {
-            if (!sb.isEmpty())
-                sb.append(", ");
-            sb.append(winner.getName());
-        });
-        return sb.toString();
+        return Car.getWinnerNames(cars);
     }
 }

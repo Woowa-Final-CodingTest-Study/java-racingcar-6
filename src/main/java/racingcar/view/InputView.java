@@ -1,9 +1,11 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Car;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static InputView inputView;
@@ -20,9 +22,27 @@ public class InputView {
 
     public List<String> readCarNames() {
         String input = Console.readLine();
-        List<String> carNames = List.of(input.split(",")); //TODO: 시간 되면 공백에 대한 처리도 구현
+        List<String> carNames = List.of(input.split(","));
+        carNames = ignoreWhitespace(carNames);
         validateCarNames(carNames);
         return carNames;
+    }
+
+    private List<String> ignoreWhitespace(List<String> carNames) {
+        return carNames.stream()
+                .map(carName -> {
+                    while (true) {
+                        if (Character.isWhitespace(carName.charAt(0))) {
+                            carName = carName.substring(1);
+                            continue;
+                        }
+                        if (Character.isWhitespace(carName.charAt(carName.length() - 1))) {
+                            carName = carName.substring(0, carName.length() - 1);
+                            continue;
+                        }
+                        return carName;
+                    }
+                }).collect(Collectors.toList());
     }
 
     private void validateCarNames(List<String> carNames) {
@@ -32,13 +52,13 @@ public class InputView {
     }
 
     private void validateCarNamesNotEmpty(List<String> carNames) {
-        if (carNames.isEmpty())
+        if (carNames.size() < 2)
             throw new IllegalArgumentException();
     }
 
-    private void validateCarNameLengthWithinRange(List<String> carNames) { // TODO: 이름 길이도 변수로
+    private void validateCarNameLengthWithinRange(List<String> carNames) {
         carNames.forEach(name -> {
-            if (name.isEmpty() || name.length() > 5) // TODO: 자동차가 1개일 때 레이싱을??
+            if (name.isEmpty() || name.length() > Car.NAME_MAX_LENGTH)
                 throw new IllegalArgumentException();
         });
     }
@@ -48,19 +68,19 @@ public class InputView {
             throw new IllegalArgumentException();
     }
 
-    public int readTryCount() { // TODO: try -> round로 통일
+    public int readRoundCount() {
         try {
             String input = Console.readLine();
-            int tryCount = Integer.parseInt(input);
-            validateTryCount(tryCount);
-            return tryCount;
+            int roundCount = Integer.parseInt(input);
+            validateRoundCount(roundCount);
+            return roundCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateTryCount(int tryCount) {
-        if (tryCount == 0)
+    private void validateRoundCount(int roundCount) {
+        if (roundCount == 0)
             throw new IllegalArgumentException();
     }
 }

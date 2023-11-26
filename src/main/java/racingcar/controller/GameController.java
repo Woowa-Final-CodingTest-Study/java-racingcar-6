@@ -1,9 +1,11 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
+import racingcar.model.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import javax.sql.rowset.CachedRowSet;
 import java.util.List;
 
 public class GameController {
@@ -31,12 +33,13 @@ public class GameController {
 
         Cars cars = new Cars(carNames);
 
-        outputView.notifyInputTryCount();
-        int tryCount = inputView.readTryCount();
+        outputView.notifyInputRoundCount();
+        int roundCount = inputView.readRoundCount();
 
         outputView.printStartRacing();
-        for (int i = 0; i < tryCount; i++) { // TODO: 함수로 한 번 감싸도 괜찮을 듯?
-            cars.goForward(); // TODO: 난수를 밖에서 제공하도록 리팩토링
+        RandomNumberGenerator rnd = new RandomNumberGenerator();
+        for (int i = 0; i < roundCount; i++) {
+            cars.goForward(rnd);
             outputView.printRoundResult(cars);
         }
 

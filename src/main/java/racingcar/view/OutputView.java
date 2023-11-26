@@ -29,11 +29,11 @@ public class OutputView {
         println(NOTIFY_INPUT_CAR_NAMES);
     }
 
-    public void notifyInputTryCount() {
-        println(NOTIFY_INPUT_TRY_COUNT);
+    public void notifyInputRoundCount() {
+        println(NOTIFY_INPUT_ROUND_COUNT);
     }
 
-    public void printRacingResult() {
+    public void printStartRacing() {
         println(RACING_RESULT);
     }
 
