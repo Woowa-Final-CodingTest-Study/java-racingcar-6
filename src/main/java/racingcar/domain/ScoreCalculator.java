@@ -21,8 +21,7 @@ public class ScoreCalculator {
     }
 
     public void startRacing(List<Player> players) {
-        for (int i = 0; i < players.size(); i++) {
-            Player player = players.get(i);
+        for (Player player : players) {
             moveOrStop(player);
         }
     }

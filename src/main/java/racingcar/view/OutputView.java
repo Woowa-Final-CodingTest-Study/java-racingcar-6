@@ -3,6 +3,8 @@ package racingcar.view;
 import racingcar.domain.Player;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static racingcar.constant.MessageConstant.*;
 
@@ -25,35 +27,26 @@ public class OutputView {
     public void printPlayerScore(List<Player> players) {
         StringBuilder score = new StringBuilder();
 
-        for (int i = 0; i < players.size(); i++) {
-            score.append(makeResult(players.get(i))).append("\n");
+        for (Player player : players) {
+            score.append(makeResult(player)).append("\n");
         }
         System.out.println(score);
     }
 
     public String makeResult(Player player) {
-        StringBuilder result = new StringBuilder();
+        String result = player.getPlayerName() +
+                SCORE_SEPARATOR.getMessage() +
+                IntStream.range(0, player.getScore())
+                        .mapToObj(i -> SCORE.getMessage())
+                        .collect(Collectors.joining());
 
-        String playerName = player.getPlayerName();
-        int playerScore = player.getScore();
-
-        result.append(playerName).append(SCORE_SEPARATOR.getMessage());
-        for (int i = 0; i < playerScore; i++) {
-            result.append(SCORE.getMessage());
-        }
-        return result.toString();
+        return result;
     }
 
     public void printWinner(List<String> winnerNames) {
-        StringBuilder winner = new StringBuilder();
-        winner.append(WINNER_MESSAGE.getMessage());
-        for (int i = 0; i < winnerNames.size(); i++) {
-            if (i == 0) {
-                winner.append(winnerNames.get(i));
-                continue;
-            }
-            winner.append(WINNER_SEPARATOR.getMessage() + winnerNames.get(i));
-        }
+        String winner = WINNER_MESSAGE.getMessage() +
+                winnerNames.stream()
+                        .collect(Collectors.joining(WINNER_SEPARATOR.getMessage()));
         System.out.println(winner);
     }
 
