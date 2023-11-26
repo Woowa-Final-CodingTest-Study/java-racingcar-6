@@ -32,7 +32,7 @@ public class OutputView {
     }
 
     public String makeResult(Player player) {
-        String result = player.getPlayerName() +
+        String result = player.getName() +
                 MessageConstant.SCORE_SEPARATOR +
                 IntStream.range(0, player.getScore())
                         .mapToObj(i -> MessageConstant.SCORE)

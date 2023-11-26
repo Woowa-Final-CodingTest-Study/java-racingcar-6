@@ -20,7 +20,7 @@ public class Winner {
 
         return players.stream()
                 .filter(player -> player.getScore() == winnerScore)
-                .map(Player::getPlayerName)
+                .map(Player::getName)
                 .collect(Collectors.toList());
     }
 

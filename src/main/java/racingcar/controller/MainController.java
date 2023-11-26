@@ -1,12 +1,12 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.domain.Player;
+import racingcar.domain.Players;
 import racingcar.domain.ScoreCalculator;
 import racingcar.domain.Winner;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
-import java.util.List;
 
 public class MainController {
 
@@ -16,7 +16,7 @@ public class MainController {
     OutputView outputView = new OutputView();
 
     public void run() {
-        List<Player> players = getPlayerNames();
+        List<Player> players = setPlayers().getPlayers();
         int attemptCount = getAttemptNumber();
 
         outputView.printResult();
@@ -27,10 +27,10 @@ public class MainController {
         outputView.printWinner(winner.chooseWinner(players));
     }
 
-    public List<Player> getPlayerNames() {
+    public Players setPlayers() {
         outputView.printInputPlayerName();
         String input = inputView.inputPlayerNames();
-        List<Player> players = scoreCalculator.initializePlayerScore(input);
+        Players players = new Players(scoreCalculator.initializePlayerScore(input));
         return players;
     }
 

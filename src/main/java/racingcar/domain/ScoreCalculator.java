@@ -26,9 +26,8 @@ public class ScoreCalculator {
     }
 
     public void moveOrStop(Player player) {
-        if (race.decideMovement()) {
-            String playerName = player.getPlayerName();
-            player.getPlayer().put(playerName, player.getScore() + 1);
+        if (race.decideMovement(race.generateRandomNumber())) {
+            player.increaseScore();
         }
     }
 
