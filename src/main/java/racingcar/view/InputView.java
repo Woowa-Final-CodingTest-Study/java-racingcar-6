@@ -29,9 +29,12 @@ public class InputView {
     }
 
     private List<String> ignoreWhitespace(List<String> carNames) {
+
         return carNames.stream()
                 .map(carName -> {
                     while (true) {
+                        if(carName.isEmpty())
+                            return carName;
                         if (Character.isWhitespace(carName.charAt(0))) {
                             carName = carName.substring(1);
                             continue;
