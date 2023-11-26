@@ -15,4 +15,5 @@ public enum RaceConstant {
     public int getNumber() {
         return number;
     }
+
 }

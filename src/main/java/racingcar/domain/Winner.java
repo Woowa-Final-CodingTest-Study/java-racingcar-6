@@ -13,7 +13,7 @@ public class Winner {
 
         for (int i = 1; i < players.size(); i++) {
             Player player = players.get(i);
-            if(winnerScore == player.getScore(player.getPlayerName())) {
+            if (winnerScore == player.getScore(player.getPlayerName())) {
                 winnerNames.add(player.getPlayerName());
             }
         }
@@ -24,4 +24,5 @@ public class Winner {
         Collections.sort(players, (o1, o2) -> o2.getScore(o2.getPlayerName())
                 - o1.getScore(o1.getPlayerName()));
     }
+
 }

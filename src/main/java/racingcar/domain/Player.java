@@ -29,4 +29,5 @@ public class Player {
     public int getScore(String name) {
         return player.get(name);
     }
+
 }
