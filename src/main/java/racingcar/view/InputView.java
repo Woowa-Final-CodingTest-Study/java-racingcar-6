@@ -7,7 +7,7 @@ import static racingcar.constant.RaceConstant.NAME_LENGTH_LIMIT;
 
 public class InputView {
 
-    public String inputPlayerName() {
+    public String inputPlayerNames() {
         String input = getUserInput();
         validateInputCorrectSeparator(input);
         validatePlayerNameLength(input);

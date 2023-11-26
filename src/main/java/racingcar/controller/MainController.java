@@ -29,7 +29,7 @@ public class MainController {
 
     public List<Player> getPlayerNames() {
         outputView.printInputPlayerName();
-        String input = inputView.inputPlayerName();
+        String input = inputView.inputPlayerNames();
         List<Player> players = scoreCalculator.initializePlayerScore(input);
         return players;
     }
