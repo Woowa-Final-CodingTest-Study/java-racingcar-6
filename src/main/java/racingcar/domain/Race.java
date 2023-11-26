@@ -6,10 +6,7 @@ import racingcar.constant.RaceConstant;
 public class Race {
 
     public boolean decideMovement(int randomNumber) {
-        if (randomNumber >= RaceConstant.MOVING_STANDARD) {
-            return true;
-        }
-        return false;
+        return randomNumber >= RaceConstant.MOVING_STANDARD;
     }
 
     public int generateRandomNumber() {

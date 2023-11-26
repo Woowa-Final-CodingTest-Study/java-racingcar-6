@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +24,7 @@ public class Winner {
     }
 
     public void sortPlayerScore(List<Player> players) {
-        Collections.sort(players, (o1, o2) -> o2.getScore()
+        players.sort((o1, o2) -> o2.getScore()
                 - o1.getScore());
     }
 

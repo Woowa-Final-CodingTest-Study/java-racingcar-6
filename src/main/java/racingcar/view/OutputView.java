@@ -32,19 +32,17 @@ public class OutputView {
     }
 
     public String makeResult(Player player) {
-        String result = player.getName() +
+
+        return player.getName() +
                 MessageConstant.SCORE_SEPARATOR +
                 IntStream.range(0, player.getScore())
                         .mapToObj(i -> MessageConstant.SCORE)
                         .collect(Collectors.joining());
-
-        return result;
     }
 
     public void printWinner(List<String> winnerNames) {
         String winner = MessageConstant.WINNER +
-                winnerNames.stream()
-                        .collect(Collectors.joining(MessageConstant.WINNER_SEPARATOR));
+                String.join(MessageConstant.WINNER_SEPARATOR, winnerNames);
         System.out.println(winner);
     }
 
