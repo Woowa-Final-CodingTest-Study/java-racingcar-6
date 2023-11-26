@@ -1,20 +1,25 @@
 package racingcar.view;
 
 import racingcar.domain.Player;
+
 import java.util.List;
 
+import static racingcar.constant.MessageConstant.*;
+
 public class OutputView {
+
+    private final String LINE_SEPARATOR = System.lineSeparator();
+
     public void printInputPlayerName() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        INPUT_CAR_NAME_MESSAGE.print();
     }
 
     public void printInputAttemptCount() {
-        System.out.println("시도할 회수는 몇회인가요?");
+        INPUT_ATTEMPT_COUNT_MESSAGE.print();
     }
 
     public void printResult() {
-        System.out.println();
-        System.out.println("실행 결과");
+        EXECUTE_RESULT_MESSAGE.print(LINE_SEPARATOR);
     }
 
     public void printPlayerScore(List<Player> players) {
@@ -32,21 +37,23 @@ public class OutputView {
         String playerName = player.getPlayerName();
         int playerScore = player.getScore(playerName);
 
-        result.append(playerName).append(" : ");
+        result.append(playerName).append(SCORE_SEPARATOR.getMessage());
         for (int i = 0; i < playerScore; i++) {
-            result.append("-");
+            result.append(SCORE.getMessage());
         }
         return result.toString();
     }
 
     public void printWinner(List<String> winnerNames) {
-        System.out.print("최종 우승자 : ");
+        StringBuilder winner = new StringBuilder();
+        winner.append(WINNER_MESSAGE.getMessage());
         for (int i = 0; i < winnerNames.size(); i++) {
-            if(i==0) {
-                System.out.print(winnerNames.get(i));
+            if (i == 0) {
+                winner.append(winnerNames.get(i));
                 continue;
             }
-            System.out.print(", " + winnerNames.get(i));
+            winner.append(WINNER_SEPARATOR.getMessage() + winnerNames.get(i));
         }
+        System.out.println(winner);
     }
 }

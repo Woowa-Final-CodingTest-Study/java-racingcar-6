@@ -3,13 +3,16 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racingcar.constant.RaceConstant.NAME_LENGTH_LIMIT;
+import static racingcar.constant.MessageConstant.NAME_SPLIT_SEPARATOR;
+
 public class ScoreCalculator {
 
     Race race = new Race();
 
     public List<Player> initializePlayerScore(String input) {
         validateInputCorrectSeparator(input);
-        String[] names = input.split(",");
+        String[] names = input.split(NAME_SPLIT_SEPARATOR.getMessage());
         validatePlayerNameLength(names);
 
         List<Player> players = new ArrayList<>();
@@ -44,7 +47,7 @@ public class ScoreCalculator {
 
     public void validatePlayerNameLength(String[] names) {
         for (String name : names) {
-            if (name.length() > 5) {
+            if (name.length() > NAME_LENGTH_LIMIT.getNumber()) {
                 throw new IllegalArgumentException();
             }
         }
