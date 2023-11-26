@@ -1,10 +1,13 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import static racingcar.constant.MessageConstant.NAME_SPLIT_SEPARATOR;
 import static racingcar.constant.RaceConstant.MAXIMUM_ATTEMPT_COUNT;
 import static racingcar.constant.RaceConstant.NAME_LENGTH_LIMIT;
+
+import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -12,6 +15,7 @@ public class InputView {
         String input = getUserInput();
         validateInputCorrectSeparator(input);
         validatePlayerNameLength(input);
+        validateDuplicateName(input);
         return input;
     }
 
@@ -49,6 +53,16 @@ public class InputView {
             if (name.length() > NAME_LENGTH_LIMIT.getNumber()) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public void validateDuplicateName(String input) {
+        Set<String> set = Arrays.stream(input.split(","))
+                .map(String::toLowerCase)
+                .collect(Collectors.toSet());
+
+        if (set.size() != input.split(",").length) {
+            throw new IllegalArgumentException();
         }
     }
 
