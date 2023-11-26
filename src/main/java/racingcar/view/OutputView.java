@@ -35,7 +35,7 @@ public class OutputView {
         StringBuilder result = new StringBuilder();
 
         String playerName = player.getPlayerName();
-        int playerScore = player.getScore(playerName);
+        int playerScore = player.getScore();
 
         result.append(playerName).append(SCORE_SEPARATOR.getMessage());
         for (int i = 0; i < playerScore; i++) {

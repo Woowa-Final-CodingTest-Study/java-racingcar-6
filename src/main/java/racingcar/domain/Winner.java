@@ -1,28 +1,31 @@
 package racingcar.domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Winner {
 
     public List<String> chooseWinner(List<Player> players) {
         sortPlayerScore(players);
-        List<String> winnerNames = new ArrayList<>();
-        String winnerName = players.get(0).getPlayerName();
-        int winnerScore = players.get(0).getScore(winnerName);
-        winnerNames.add(winnerName);
+        return findWinner(players);
+    }
 
-        for (int i = 1; i < players.size(); i++) {
-            Player player = players.get(i);
-            if (winnerScore == player.getScore(player.getPlayerName())) {
-                winnerNames.add(player.getPlayerName());
-            }
+    public List<String> findWinner(List<Player> players) {
+        if (players.isEmpty()) {
+            return List.of();
         }
-        return winnerNames;
+
+        int winnerScore = players.get(0).getScore();
+
+        return players.stream()
+                .filter(player -> player.getScore() == winnerScore)
+                .map(Player::getPlayerName)
+                .collect(Collectors.toList());
     }
 
     public void sortPlayerScore(List<Player> players) {
-        Collections.sort(players, (o1, o2) -> o2.getScore(o2.getPlayerName())
-                - o1.getScore(o1.getPlayerName()));
+        Collections.sort(players, (o1, o2) -> o2.getScore()
+                - o1.getScore());
     }
 
 }

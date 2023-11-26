@@ -26,7 +26,8 @@ public class Player {
         return key.iterator().next();
     }
 
-    public int getScore(String name) {
+    public int getScore() {
+        String name = getPlayerName();
         return player.get(name);
     }
 
