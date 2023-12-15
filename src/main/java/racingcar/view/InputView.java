@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.constants.ErrorMessage;
 
 public class InputView {
     OutputView outputView = new OutputView();
@@ -37,13 +38,13 @@ public class InputView {
         try {
             Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NOT_INTEGER_ERROR.getErrorMessage());
         }
     }
 
     public void validateRoundsRange(int rounds) {
         if (rounds > 100 || rounds < 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_ERROR.getErrorMessage());
         }
     }
 
@@ -64,7 +65,7 @@ public class InputView {
 
     private void validateNull(String input) {
         if (input.isEmpty() || input == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NULL_ERROR.getErrorMessage());
         }
     }
 
@@ -72,7 +73,7 @@ public class InputView {
         String[] names = input.split(",");
         for (String name : names) {
             if (name.trim().isEmpty()) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.FORMAT_ERROR.getErrorMessage());
             }
         }
     }
@@ -81,7 +82,7 @@ public class InputView {
         String[] names = input.split(",");
         for (String name : names) {
             if (name.length() < 1 || name.length() > 5) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_ERROR.getErrorMessage());
             }
         }
     }
