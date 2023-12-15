@@ -27,7 +27,7 @@ public class Cars {
         String carName = car.getName();
         int currentPosition = car.getPosition();
         StringBuilder sb = new StringBuilder();
-        sb.append(carName).append(":");
+        sb.append(carName).append(" : ");
         if (currentPosition > 0) {
             sb.append("-".repeat(currentPosition));
         }
