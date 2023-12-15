@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.constants.GameMessage;
 import racingcar.domain.Cars;
+import racingcar.domain.Rounds;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,12 +17,19 @@ public class Controller {
     }
 
     public void run() {
-
+        Cars cars = registerCars();
+        Rounds rounds = registerRounds();
     }
 
     public Cars registerCars() {
         outputView.printMessage(GameMessage.ENTER_CAR_NAME_MESSAGE.getMessage());
         List<String> carNames = inputView.getCarNameInput();
         return new Cars(carNames);
+    }
+
+    public Rounds registerRounds() {
+        outputView.printMessage(GameMessage.ENTER_ROUNDS_MESSAGE.getMessage());
+        int rounds = inputView.getRoundsInput();
+        return new Rounds(rounds);
     }
 }

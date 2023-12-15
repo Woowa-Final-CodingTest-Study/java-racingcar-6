@@ -19,6 +19,34 @@ public class InputView {
         }
     }
 
+    public int getRoundsInput() {
+        try {
+            String input = Console.readLine();
+            validateNull(input);
+            validateInteger(input);
+            int rounds = Integer.parseInt(input);
+            validateRoundsRange(rounds);
+            return rounds;
+        } catch (IllegalArgumentException e) {
+            outputView.printMessage(e.getMessage());
+            return getRoundsInput();
+        }
+    }
+
+    public void validateInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateRoundsRange(int rounds) {
+        if (rounds > 100 || rounds < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private List<String> parseToList(String input) {
         String[] names = input.split(",");
         List<String> carNames = new ArrayList<>();
