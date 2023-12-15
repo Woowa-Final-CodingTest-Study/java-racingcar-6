@@ -9,7 +9,7 @@ public class Service {
 
     public void startGame(Cars cars, Rounds rounds) {
         int round = getRound(rounds);
-
+        outputView.printMessage("실행 결과");
         for (int i = 0; i < round; i++) {
             // !!!각각의 car에 무작위 숫자를 대입하기!!!
             for (Car car : cars.getCars()) {
@@ -19,6 +19,7 @@ public class Service {
                 }
             }
             printStatus(cars);
+            outputView.printEmptyLine();
         }
         printWinners(cars);
     }
@@ -29,7 +30,6 @@ public class Service {
     }
 
     public void printStatus(Cars cars) {
-        outputView.printMessage("실행 결과");
         for (Car car : cars.getCars()) {
             outputView.printMessage(cars.getRacingStatus(car));
         }
