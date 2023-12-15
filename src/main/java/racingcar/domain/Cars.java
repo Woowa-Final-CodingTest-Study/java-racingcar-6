@@ -1,8 +1,8 @@
 package racingcar.domain;
 
+import static java.lang.System.lineSeparator;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -14,5 +14,28 @@ public class Cars {
             tempCars.add(new Car(car));
         }
         this.cars = tempCars;
+    }
+
+    // !!!아주 중요!!!
+    public void moveAll() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    public String getRacingStatus(Car car) {
+        String carName = car.getName();
+        int currentPosition = car.getPosition();
+        StringBuilder sb = new StringBuilder();
+        sb.append("실행 결과").append(lineSeparator());
+        sb.append(carName).append(":");
+        if (currentPosition > 0) {
+            sb.append("-".repeat(currentPosition));
+        }
+        return sb.toString();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.constants.GameMessage;
 import racingcar.domain.Cars;
 import racingcar.domain.Rounds;
+import racingcar.domain.Service;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,6 +20,8 @@ public class Controller {
     public void run() {
         Cars cars = registerCars();
         Rounds rounds = registerRounds();
+        Service service = new Service();
+        service.startGame(cars, rounds);
     }
 
     public Cars registerCars() {

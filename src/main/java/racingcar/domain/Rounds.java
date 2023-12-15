@@ -6,4 +6,8 @@ public class Rounds {
     public Rounds(int round) {
         this.round = round;
     }
+
+    public int getRound() {
+        return round;
+    }
 }
