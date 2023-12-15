@@ -27,7 +27,6 @@ public class Cars {
         String carName = car.getName();
         int currentPosition = car.getPosition();
         StringBuilder sb = new StringBuilder();
-        sb.append("실행 결과").append(lineSeparator());
         sb.append(carName).append(":");
         if (currentPosition > 0) {
             sb.append("-".repeat(currentPosition));
@@ -37,5 +36,27 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> calculateWinners() {
+        List<Car> winners = new ArrayList<>();
+        int maxPosition = getMaxPosition();
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
     }
 }

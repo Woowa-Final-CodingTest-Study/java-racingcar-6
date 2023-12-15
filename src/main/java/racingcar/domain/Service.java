@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
 import racingcar.view.OutputView;
 
 public class Service {
@@ -8,14 +9,18 @@ public class Service {
 
     public void startGame(Cars cars, Rounds rounds) {
         int round = getRound(rounds);
+
         for (int i = 0; i < round; i++) {
-            int randomNumber = Randoms.pickNumberInRange(0,9);
-            if (randomNumber >= 4) {
-                cars.moveAll();
+            // !!!각각의 car에 무작위 숫자를 대입하기!!!
+            for (Car car : cars.getCars()) {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if (randomNumber >= 4) {
+                    car.move();
+                }
             }
             printStatus(cars);
         }
-        // 우승자
+        printWinners(cars);
     }
 
     public int getRound(Rounds rounds) {
@@ -24,9 +29,21 @@ public class Service {
     }
 
     public void printStatus(Cars cars) {
-        for (Car car : cars.getCars())
-        outputView.printMessage(cars.getRacingStatus(car));
+        outputView.printMessage("실행 결과");
+        for (Car car : cars.getCars()) {
+            outputView.printMessage(cars.getRacingStatus(car));
+        }
     }
 
-
+    public void printWinners(Cars cars) {
+        List<Car> winners = cars.calculateWinners();
+        StringBuilder winnerNames = new StringBuilder();
+        for (Car winner : winners) {
+            if (winnerNames.length() > 0) {
+                winnerNames.append(", ");
+            }
+            winnerNames.append(winner.getName());
+        }
+        outputView.printMessage("우승자: " + winnerNames.toString());
+    }
 }
